@@ -15,7 +15,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
     networks:
-      - backend
+      - common
       
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
@@ -27,8 +27,7 @@ services:
     depends_on: 
       - qa-mysql
     networks:
-      - frontend
-      - backend
+      - common
       
   qa-frontend:
     image: shyamanthkashyap/qa-frontend:latest
@@ -38,11 +37,10 @@ services:
     depends_on:
       - qa-backend
     networks:
-      - frontend
+      - common
       
 volumes:
   qa-data: null
   
 networks:
-  backend:
-  frontend:   
+  common: 
