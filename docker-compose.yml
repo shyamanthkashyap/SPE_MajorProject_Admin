@@ -1,5 +1,5 @@
 ---
-version: "3.3"
+version: "3"
 services:
   qa-mysql:
     image: mysql:5.7
@@ -10,23 +10,27 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_DATABASE: SPE_Project
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: password
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=SPE_PROJECT
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
     container_name: qa-backend
     ports:
       - 8000:8000
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
     links:
       - qa-mysql
+      
   qa-frontend:
     image: shyamanthkashyap/qa-frontend:latest
-    container_name: qa-backend
+    container_name: qa-frontend
     ports:
-      - 3000:80
+      - 3000:3000
     links:
       - qa-backend
 volumes:
   qa-data: null
-
