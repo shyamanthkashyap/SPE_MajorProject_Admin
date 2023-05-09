@@ -15,17 +15,17 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_PASSWORD: password
   qa-backend:
-    build: ./SPE_MajorProject
+    image: shyamanthkashyap/qa-backend:latest
     container_name: qa-backend
     environment:
       - MYSQL_USER=sk
       - MYSQL_PASSWORD=password
     ports:
-      - 8080:8080
+      - 8000:8000
     links:
       - qa-mysql
   qa-frontend:
-    build: ./SPE_MajorProject_Frontend
+    image: shyamanthkashyap/qa-frontend:latest
     container_name: qa-backend
     ports:
       - 3000:80
