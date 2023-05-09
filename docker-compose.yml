@@ -1,12 +1,12 @@
 ---
 version: "3"
 services:
-  qa-mysql:
+  qamysql:
     image: mysql:5.7
     restart: always
     container_name: qa-mysql
     volumes:
-      - qa-data:/var/lib/mysql
+      - qadata:/var/lib/mysql
     ports:
       - 3306:3306
     environment:
@@ -16,29 +16,33 @@ services:
       - MYSQL_PASSWORD=password
     networks:
       - backend
-  qa-backend:
+      
+  qabackend:
     image: shyamanthkashyap/qa-backend:latest
     container_name: qa-backend
     ports:
       - 8000:8000
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
-      depends_on:
-        - qa-mysql
+      depends_on: 
+      	- qamysql
       networks:
-        - frontend
-        - backend
-  qa-frontend:
+      - frontend
+      - backend
+      
+  qafrontend:
     image: shyamanthkashyap/qa-frontend:latest
     container_name: qa-frontend
     ports:
       - 3000:3000
     depends_on:
-      - qa-backend
+      - qabackend
     networks:
       - frontend
+      
 volumes:
   qa-data: null
+  
 networks:
-  backend: null
-  frontend: null
+  backend:
+  frontend:   
