@@ -1,0 +1,36 @@
+---
+version: "3.3"
+services:
+  qa-mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: qa-mysql
+    volumes:
+      - qa-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: SPE_Project
+      MYSQL_USER: sk
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_PASSWORD: password
+  qa-backend:
+    build: ./SPE_MajorProject
+    container_name: qa-backend
+    environment:
+      - MYSQL_USER=sk
+      - MYSQL_PASSWORD=password
+    ports:
+      - 8080:8080
+    links:
+      - qa-mysql
+  qa-frontend:
+    build: ./SPE_MajorProject_Frontend
+    container_name: qa-backend
+    ports:
+      - 3000:80
+    links:
+      - qa-backend
+volumes:
+  qa-data: null
+
