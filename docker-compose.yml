@@ -14,7 +14,8 @@ services:
       - MYSQL_DATABASE=SPE_PROJECT
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
-      
+    networks:
+      - backend
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
     container_name: qa-backend
@@ -22,15 +23,22 @@ services:
       - 8000:8000
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
-    links:
-      - qa-mysql
-      
+      depends_on:
+        - qa-mysql
+      networks:
+        - frontend
+        - backend
   qa-frontend:
     image: shyamanthkashyap/qa-frontend:latest
     container_name: qa-frontend
     ports:
       - 3000:3000
-    links:
+    depends_on:
       - qa-backend
+    networks:
+      - frontend
 volumes:
   qa-data: null
+networks:
+  backend: null
+  frontend: null
