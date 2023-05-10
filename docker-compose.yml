@@ -15,7 +15,8 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
     networks:
-      - common
+      common:
+        ipv4_address: 192.168.10.7
       
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
@@ -27,7 +28,8 @@ services:
     depends_on: 
       - qa-mysql
     networks:
-      - common
+      common:
+        ipv4_address: 192.168.10.6
       
   qa-frontend:
     image: shyamanthkashyap/qa-frontend:latest
@@ -37,7 +39,8 @@ services:
     depends_on:
       - qa-backend
     networks:
-      - common
+      common:
+        ipv4_address: 192.168.10.5
       
 volumes:
   qa-data: null
@@ -45,3 +48,6 @@ volumes:
 networks:
   common:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
