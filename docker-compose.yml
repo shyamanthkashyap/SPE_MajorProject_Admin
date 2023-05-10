@@ -24,7 +24,7 @@ services:
     ports:
       - 8000:8000
     environment:
-      - SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
+      SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
     depends_on: 
       - qa-mysql
     networks:
