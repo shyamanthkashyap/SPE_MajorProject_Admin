@@ -14,6 +14,10 @@ services:
       - MYSQL_DATABASE=SPE_PROJECT
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
+    networks:
+      - subnet
+      
+      
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
     container_name: qa-backend
@@ -27,6 +31,10 @@ services:
       - MYSQL_PORT=3306
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
+    networks:
+      - subnet
+      
+      
   qa-frontend:
     image: shyamanthkashyap/qa-frontend:latest
     container_name: qa-frontend
@@ -34,5 +42,12 @@ services:
       - 3000:3000
     depends_on: 
       - qa-backend
+    networks:
+      - subnet
+      
+      
 volumes:
   qa-data: null
+  
+networks:
+  subnet:
