@@ -25,8 +25,6 @@ services:
       - 8000:8000
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
-    depends_on: 
-      - qa-mysql
     networks:
       qa:
         ipv4_address: 192.168.10.6
@@ -36,8 +34,6 @@ services:
     container_name: qa-frontend
     ports:
       - 3000:3000
-    depends_on:
-      - qa-backend
     networks:
       qa:
         ipv4_address: 192.168.10.5
