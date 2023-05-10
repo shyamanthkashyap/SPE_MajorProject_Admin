@@ -1,4 +1,4 @@
----
+	---
 version: "3"
 services:
   qa-mysql:
@@ -48,6 +48,6 @@ volumes:
 networks:
   common:
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 192.168.10.0/24
