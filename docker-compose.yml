@@ -20,7 +20,7 @@ services:
     restart: always
     ports:
       - 8000:8000
-    depends_on: qa-sql
+    depends_on: qa-mysql
   qa-frontend:
     image: shyamanthkashyap/qa-frontend:latest
     container_name: qa-frontend
