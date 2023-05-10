@@ -14,7 +14,6 @@ services:
       - MYSQL_DATABASE=SPE_PROJECT
       - MYSQL_USER=root
       - MYSQL_PASSWORD=password
-      
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
     container_name: qa-backend
@@ -22,15 +21,11 @@ services:
     ports:
       - 8000:8000
     depends_on: qa-sql
-    
-      
   qa-frontend:
     image: shyamanthkashyap/qa-frontend:latest
     container_name: qa-frontend
     ports:
       - 3000:3000
     depends_on: qa-backend
-      
 volumes:
   qa-data: null
-
