@@ -12,8 +12,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=SPE_PROJECT
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
     networks:
       - subnet
       
