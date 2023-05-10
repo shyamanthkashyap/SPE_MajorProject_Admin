@@ -1,1 +1,1 @@
-localhost ansible_user=shyamanth
+192.168.0.107 ansible_ssh_user=shyamanth ansible_ssh_pass=Rakendu@1994
