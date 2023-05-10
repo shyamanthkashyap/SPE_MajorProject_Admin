@@ -43,4 +43,6 @@ volumes:
   qa-data: null
   
 networks:
-  common: 
+  common:
+    driver: bridge
+  	
