@@ -16,7 +16,7 @@ services:
       - MYSQL_PASSWORD=password
     networks:
       qa:
-        ipv4_address: 192.168.12.7
+        ipv4_address: 192.168.5.7
       
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
@@ -28,7 +28,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
     networks:
       qa:
-        ipv4_address: 192.168.12.6
+        ipv4_address: 192.168.5.6
     
       
   qa-frontend:
@@ -38,7 +38,7 @@ services:
       - 3000:3000
     networks:
       qa:
-        ipv4_address: 192.168.12.5
+        ipv4_address: 192.168.5.5
       
 volumes:
   qa-data: null
@@ -48,4 +48,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 192.168.12.0/24
+        - subnet: 192.168.5.0/24
