@@ -45,6 +45,3 @@ volumes:
 networks:
   common:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.0.0/24
