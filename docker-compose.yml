@@ -16,7 +16,7 @@ services:
       - MYSQL_PASSWORD=password
     networks:
       qa:
-        ipv4_address: 192.168.11.7
+        ipv4_address: 192.168.11.2
       
   qa-backend:
     image: shyamanthkashyap/qa-backend:latest
@@ -28,7 +28,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://qa-mysql:3306/SPE_Project?autoReconnect=true&useSSL=false&createDatabaseIfNotExist=TRUE
     networks:
       qa:
-        ipv4_address: 192.168.11.6
+        ipv4_address: 192.168.11.1
     
       
   qa-frontend:
