@@ -53,7 +53,7 @@ services:
       
       
 volumes:
-  qa-store: null
+  qa-store:
   
 networks:
   subnet:
