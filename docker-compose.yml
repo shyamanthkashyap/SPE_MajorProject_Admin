@@ -53,7 +53,7 @@ services:
       
       
 volumes:
-  qa-base: null
+  qa-base: {}
   
 networks:
   subnet:
