@@ -51,7 +51,7 @@ services:
       
       
 volumes:
-  qa-data: null
+  qa-data:
   
 networks:
   subnet:
