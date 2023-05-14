@@ -36,7 +36,7 @@ services:
         max-file: "3"
         compress: "true"
     volumes:
-      - ./backend/logs:/usr/src/app/logs/
+      - ./backend/logs:/logs/
     networks:
       - subnet
       
